@@ -1,0 +1,48 @@
+# Tests API AuthService
+
+## Test de santé du service
+GET http://localhost:8081/api/auth/health
+
+### Test de connexion avec utilisateur valide
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Test de connexion avec utilisateur normal
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "password123"
+}
+
+### Test de connexion avec mauvais mot de passe
+POST http://localhost:8081/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "wrongpassword"
+}
+
+### Test de création d'un nouvel utilisateur
+POST http://localhost:8081/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "newuser",
+  "password": "newpassword123",
+  "email": "newuser@example.com",
+  "role": "USER"
+}
+
+### Test H2 Console (accès direct via navigateur)
+# http://localhost:8081/h2-console
+# JDBC URL: jdbc:h2:mem:authdb
+# User: sa
+# Password: (vide)
